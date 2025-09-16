@@ -4,16 +4,18 @@ The goal of this project is, to provide a cloudless, lightweight and cheap MJPEG
 
 This project is using the ESP32-CAM module. Different camera modules can be used as per instructions [below](#changing-the-camera-module).
 
-## Installing the Firmware
+## The ESP32 Firmware
 
-### Prerequisites
+### Installation
+
+#### Prerequisites
 
 * VSCode
 * PlatformIO extension for VSCode
 * ESP32-CAM module (e. g. https://amzn.eu/d/cETEouy)
 * USB cable, compatible with ESP32-CAM (e. g. USB-C to USB-A)
 
-### Instructions
+#### Instructions
 
 1. Create the file _src/wifi_config.h_ based on this template:
 
@@ -26,15 +28,15 @@ This project is using the ESP32-CAM module. Different camera modules can be used
 3. Connect the ESP32-CAM module to your computer
 4. Upload the binary using PlatformIO
 
-## Custom adjustments
+### Custom adjustments
 
-### Changing the camera module
+#### Changing the camera module
 
 Different camera modules can be supported by adjusting the `camera_config_t` configuration in _src/main.cpp_.
 
 Only the relevant variables are shown in the below code segments.
 
-#### ESP32-CAM
+##### ESP32-CAM
 
 ``` cpp
 camera_config_t camera_config = {
@@ -59,7 +61,7 @@ camera_config_t camera_config = {
 };
 ```
 
-#### ESP32 WROVER CAM
+##### ESP32 WROVER CAM
 
 ``` cpp
 camera_config_t camera_config = {
@@ -84,7 +86,7 @@ camera_config_t camera_config = {
 };
 ```
 
-#### ESP32S3 WROOM CAM
+##### ESP32S3 WROOM CAM
 
 ``` cpp
 camera_config_t camera_config = {
@@ -109,7 +111,7 @@ camera_config_t camera_config = {
 };
 ```
 
-### Changing the maximum framerate
+#### Changing the maximum framerate
 
 Different frame rates can be configured by changing the `MAX_FPS` define in _src/main.cpp_.
 
@@ -117,11 +119,11 @@ Different frame rates can be configured by changing the `MAX_FPS` define in _src
 #define MAX_FPS 20
 ```
 
-### Changing image quality
+#### Changing image quality
 
 The most important settings referring the image quality are `frame_size` and `jpeg_quality`. Changing these settings can massively influence the achievable frame-rate.
 
-#### Frame-Size
+##### Frame-Size
 
 Set the `frame_size` setting to the desired value.
 
@@ -141,7 +143,7 @@ Some of the most popular settings are
 | FRAMESIZE_SXGA | 1280x1024  |
 | FRAMESIZE_UXGA | 1600x1200  |
 
-#### JPEG Quality
+##### JPEG Quality
 
 Set the `jpeg_quality` setting to a value from 0-63, where a lower value means higher quality.
 
